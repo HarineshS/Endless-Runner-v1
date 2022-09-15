@@ -10,7 +10,7 @@ public class Runner : MonoBehaviour
     public float Playerspeed=1;
     public Animator PlayerAnimator;
     public Vector3 jumpp;
-    public bool isjumping;
+    public bool isgrounded = true;
     public Transform currentposition;
     public Transform target;
 
@@ -41,12 +41,7 @@ public class Runner : MonoBehaviour
         turnonnragdoll();
     }
 
-    private IEnumerator WaitJump()
-    {
-        yield return new WaitForSeconds(3f);
-        isjumping=true;
-        yield return new WaitForSeconds(.2f);
-    }
+    
 
     private void turnoffragdoll()
     {
@@ -122,21 +117,42 @@ public class Runner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        run();
+        if(PlayerAnimator.enabled == true)
+    {
+        if(isgrounded)
+     {
+         run();
+       
+     }
        
         
     }
+    }
+
+    
+ 
+ //consider when character is jumping .. it will exit collision.
+ private void OnCollisionExit(Collision collision)
+ {
+     if(collision.gameObject.tag == "Ground")
+     {
+         isgrounded = false;
+     }
+ }
+
+
+
+
 
     void run()
     {
         
         //target.position = transform.position+(2,0,0);
         //print(transform.position);
-        isjumping=false; 
+        
         PlayerAnimator.SetTrigger("Run");
 
-        if(isjumping==false)
-        {
+        
 
         if (Input.GetKey("a"))
         {
@@ -154,17 +170,17 @@ public class Runner : MonoBehaviour
             
         }
 
-         if (Input.GetKeyDown("space"))
+         if (Input.GetKeyDown("space")&& isgrounded)
         {
             //StartCoroutine(WaitJump());
             PlayerAnimator.SetTrigger("Jump");
             //print("space key was pressed");
 
             playerrigidbody.AddForce(jumpp * Jump_force, ForceMode.Impulse);
-            isjumping = true;
+            
         }
 
-        }
+        
 
 
 
@@ -182,6 +198,10 @@ public class Runner : MonoBehaviour
             //Debug.Log("Do something here");
             turnonnragdoll();
         }
+        if(collision.gameObject.tag == "Ground")
+     {
+         isgrounded = true;
+     }
 
 
 
