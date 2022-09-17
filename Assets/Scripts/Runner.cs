@@ -73,6 +73,11 @@ public class Runner : MonoBehaviour
 
 
     //
+    private IEnumerator Death()
+    {
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 0f;
+    } 
 
     
 
@@ -83,6 +88,8 @@ public class Runner : MonoBehaviour
         this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
         PlayerAnimator.enabled = false;
         PlayerAnimator.avatar = null;
+        StartCoroutine(Death());
+        
 
 
         foreach (Collider c in Ragdollparts)
