@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 502489302953367614}
   - component: {fileID: 502489302953367613}
   - component: {fileID: 2137540481892836916}
+  - component: {fileID: 5500012780756708440}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Obstacle
@@ -108,4 +109,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7227bda005767469a38ef678033b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obsspeed: 16
+  obsspeed: 26
+--- !u!54 &5500012780756708440
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502489302953367612}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

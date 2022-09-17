@@ -27,10 +27,12 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Check)
-        {
-            StartCoroutine(CreateObstacle(time));
-        }
+       
+            if(Check)
+            {
+                StartCoroutine(CreateObstacle(time));
+            }
+        
        
     }
 
@@ -39,9 +41,10 @@ public class Spawner : MonoBehaviour
         Check=false;
         yield return new WaitForSeconds(2f);
         index=Random.Range(0, SpawnPoint.Length);
-        for (var i = 0; i < 3; i++)
+        ObjInstance=Random.Range(0,Obstacles.Length);
+        for (var i = 0; i < 1; i++)
         {
-            Instantiate(Obstacles[0], SpawnPoint[index].position, Quaternion.identity);
+            Instantiate(Obstacles[ObjInstance], SpawnPoint[index].position, Quaternion.identity);
         }
         yield return new WaitForSeconds(1f);
         Check=true;

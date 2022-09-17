@@ -17,6 +17,10 @@ public class Runner : MonoBehaviour
     public List<Collider> Ragdollparts = new List<Collider>();
     public List<Rigidbody>bodies = new List<Rigidbody>();
 
+    //private PauseControl pausecontrol;
+
+
+
     public Rigidbody playerrigidbody;
 
 
@@ -111,11 +115,14 @@ public class Runner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //pausecontrol= GetComponent<PauseControl>();
+        
         
     }
 
     // Update is called once per frame
     void Update()
+
     {
         if(PlayerAnimator.enabled == true)
     {
@@ -146,6 +153,7 @@ public class Runner : MonoBehaviour
 
     void run()
     {
+        //Time.timeScale = 0f;
         
         //target.position = transform.position+(2,0,0);
         //print(transform.position);
